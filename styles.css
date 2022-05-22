@@ -5,12 +5,11 @@
   padding: 0;
   font-family: 'Courier New', monospace;
   text-align: center;
+  color: white;
 }
-
 ul {
   list-style: none;
 }
-
 section {
   display: flex;
   flex-direction: column;
@@ -18,24 +17,36 @@ section {
   width: 800px;
   height: 450px;
   margin: 5rem auto;
-  background-color: #eeeeee;
-}
-
-.title {
-  font-size: 4rem;
-  letter-spacing: 0.5rem;
-}
-.subtitle {
-  font-size: 3rem;
-  letter-spacing: 0.5rem;
-}
-.description {
-  font-size: 1.5rem;
+  background-color: black;
 }
 .inactive {
   display: none;
 }
+.subtitle {
+  font-size: 3rem;
+}
 
+/* start section */
+#start-title {
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+}
+#start-text {
+  font-size: 1.5rem;
+  animation-name: blink;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
 /* level section */
 .level-item {
   width: 30%;
@@ -44,7 +55,7 @@ section {
   margin: 1rem auto;
 }
 .level-item:hover {
-  background-color: lightgrey;
+  background-color: darkslategrey;
 }
 
 /* game section */
@@ -59,16 +70,23 @@ section {
   width: 50%;
   margin: 0 auto;
 }
+#game-status p {
+  font-size: 1.3rem;
+}
+#game-timer {
+  font-size: 2rem;
+  font-weight: bold;
+}
 
 /* result section */
-.result-select {
+#result-select {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 50%;
   margin: 0 auto;
 }
-.result-select p {
+#result-select p {
   font-size: 1.5rem;
   cursor: pointer;
 }

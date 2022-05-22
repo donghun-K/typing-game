@@ -83,7 +83,7 @@
   }
   function updateTimer() {
     const timeLeft = startTime + timeLimit - Date.now();
-    gameTimer.textContent = (timeLeft / 1000).toFixed(2);
+    gameTimer.textContent = `LEFT TIME: ${(timeLeft / 1000).toFixed(2)}`;
 
     const timeoutId = setTimeout(() => {
       updateTimer();
