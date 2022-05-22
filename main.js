@@ -25,7 +25,15 @@
 
   // level section
   let level;
-
+  const levelItems = document.querySelectorAll('.level-item');
+  levelItems.forEach((levelItem, i) => {
+    levelItem.addEventListener('click', () => {
+      level = i;
+      console.log(level);
+      step = 2;
+      changeScreen();
+    });
+  });
   // game section
   let loc = 0;
   let life = 5;
