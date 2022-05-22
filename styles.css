@@ -52,3 +52,16 @@ section {
   font-size: 3rem;
   letter-spacing: 0.7rem;
 }
+
+/* result section */
+.result-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
+}
+.result-select p {
+  font-size: 1.5rem;
+  cursor: pointer;
+}

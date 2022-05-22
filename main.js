@@ -84,12 +84,17 @@
       updateTimer();
     }, 10);
     if (timeLeft <= 0) {
+      gameTimer.textContent = '0.00';
       isPlaying = false;
       clearTimeout(timeoutId);
-      gameTimer.textContent = '0.00';
+      alert('Time Out!');
+      step = 3;
+      changeScreen();
+      setResult();
     }
   }
   function startGame() {
+    gameWord.textContent = 'Ready?';
     setTimeout(() => {
       gameWord.textContent = 3;
     }, 1000);
@@ -104,6 +109,7 @@
     }, 2500);
     setTimeout(() => {
       isPlaying = true;
+      word = getWord();
       gameWord.textContent = word;
       startTime = Date.now();
       updateTimer();
@@ -128,9 +134,44 @@
         loc = 0;
         if (life > 0) {
           life--;
+        } else {
+          alert('Game Over!');
+          step = 3;
+          changeScreen();
+          setResult();
         }
         updateLife();
       }
     }
+  });
+
+  // result section
+  const resultLevel = document.getElementById('result-level');
+  const resultScore = document.getElementById('result-score');
+  const resultRetry = document.getElementById('result-retry');
+  const resultTitle = document.getElementById('result-title');
+
+  function setResult() {
+    switch (level) {
+      case 0:
+        resultLevel.textContent = 'Easy';
+        break;
+      case 1:
+        resultLevel.textContent = 'Normal';
+        break;
+      case 2:
+        resultLevel.textContent = 'Hard';
+        break;
+    }
+  }
+
+  resultRetry.addEventListener('click', () => {
+    step = 2;
+    changeScreen();
+    startGame();
+  });
+  resultTitle.addEventListener('click', () => {
+    step = 0;
+    changeScreen();
   });
 }
