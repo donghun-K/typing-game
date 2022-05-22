@@ -29,7 +29,16 @@
   // game section
   let loc = 0;
   let life = 5;
-  const words = [[red, blue, pink, sky],[yellow, purple, crimson, hotpink],[lightgoldenrodyellow, palegoldenrod, mediumseagreen, cornflowerblue]]];
+  const words = [
+    ['red', 'blue', 'pink', 'sky'],
+    ['yellow', 'purple', 'crimson', 'hotpink'],
+    [
+      'lightgoldenrodyellow',
+      'palegoldenrod',
+      'mediumseagreen',
+      'cornflowerblue',
+    ],
+  ];
   let word = getWord();
   const timeLimit = 3 * 1000;
   let startTime;
