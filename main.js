@@ -97,11 +97,11 @@
     const timeoutId = setTimeout(() => {
       updateTimer();
     }, 10);
-    if (timeLeft <= 0) {
+    if (timeLeft <= 0 || isPlaying == false) {
       gameTimer.textContent = '0.00';
       isPlaying = false;
       clearTimeout(timeoutId);
-      alert('Time out!');
+      isPlaying == true ? alert('Time out!') : null;
       step = RESULT_SECTION;
       if (score > highScore) {
         isNewRecord = true;
@@ -161,6 +161,7 @@
         if (life > 0) {
           life--;
         } else {
+          isPlaying = false;
           alert('Game Over!');
           step = RESULT_SECTION;
           if (score > highScore) {
