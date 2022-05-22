@@ -28,14 +28,25 @@
     </section>
     <section id="result">
       <p class="subtitle">Result</p>
-      <div class="result-content">
-        <p id="result-level"></p>
-        <p id="result-score">Score: 0</p>
+      <div id="result-content">
+        <div>
+          <p>High Score</p>
+          <span id="result-highScore"></span>
+        </div>
+        <div>
+          <p>Score</p>
+          <span id="result-score"></span>
+        </div>
       </div>
       <div id="result-select">
         <p id="result-retry">Retry</p>
         <p id="result-title">Title</p>
       </div>
+    </section>
+    <section id="input">
+      <p class="subtitle">New record!</p>
+      <input type="text" id="input-username" value="Unknown" maxlength="14" />
+      <p id="input-text">Write your name</p>
     </section>
     <script src="main.js"></script>
   </body>

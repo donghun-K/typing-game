@@ -6,6 +6,7 @@
   font-family: 'Courier New', monospace;
   text-align: center;
   color: white;
+  user-select: none;
 }
 ul {
   list-style: none;
@@ -79,6 +80,18 @@ section {
 }
 
 /* result section */
+#result-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 120px;
+}
+#result-content p {
+  font-size: 1.8rem;
+}
+#result-content span {
+  font-size: 1.2rem;
+}
 #result-select {
   display: flex;
   flex-direction: row;
@@ -89,4 +102,15 @@ section {
 #result-select p {
   font-size: 1.5rem;
   cursor: pointer;
+}
+
+/* input section */
+#input-username {
+  font-size: 2rem;
+  background-color: black;
+  border: none;
+  outline: none;
+}
+#input-text {
+  font-size: 1.3rem;
 }

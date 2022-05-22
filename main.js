@@ -1,7 +1,16 @@
 'use strict';
 {
+  const START_SECTION = 0;
+  const LEVEL_SECTION = 1;
+  const GAME_SECTION = 2;
+  const RESULT_SECTION = 3;
+  const INPUT_SECTION = 4;
+
+  let isNewRecord = false;
   let isPlaying = false;
-  let step = 0;
+  let step = START_SECTION;
+  let highScoreUser = 'Unknown';
+  let highScore = 0;
 
   const sections = document.querySelectorAll('section');
 
@@ -19,7 +28,7 @@
   // start section
   const startSection = document.getElementById('start');
   startSection.addEventListener('click', () => {
-    step = 1;
+    step = LEVEL_SECTION;
     changeScreen();
   });
 
@@ -30,7 +39,7 @@
     levelItem.addEventListener('click', () => {
       level = i;
       console.log(level);
-      step = 2;
+      step = GAME_SECTION;
       changeScreen();
       startGame();
     });
@@ -93,7 +102,11 @@
       isPlaying = false;
       clearTimeout(timeoutId);
       alert('Time out!');
-      step = 3;
+      step = RESULT_SECTION;
+      if (score > highScore) {
+        isNewRecord = true;
+        step = INPUT_SECTION;
+      }
       changeScreen();
       setResult();
     }
@@ -131,7 +144,6 @@
 
   window.addEventListener('keydown', (e) => {
     if (isPlaying == true) {
-      console.log(e.key);
       if (e.key === gameWord.textContent[loc]) {
         console.log('correct!');
         loc++;
@@ -150,43 +162,65 @@
           life--;
         } else {
           alert('Game Over!');
-          step = 3;
+          step = RESULT_SECTION;
+          if (score > highScore) {
+            isNewRecord = true;
+            step = INPUT_SECTION;
+          }
           changeScreen();
           setResult();
         }
         updateLife();
       }
     }
+    if (isNewRecord == true) {
+      if (e.key === 'Enter') {
+        const newUser = document.getElementById('input-username').value;
+        if (newUser === '') {
+          alert('Name cannot be empty!');
+        }
+        highScore = score;
+        highScoreUser = newUser;
+        isNewRecord = false;
+        step = RESULT_SECTION;
+        changeScreen();
+        setResult();
+      }
+    }
   });
 
   // result section
-  const resultLevel = document.getElementById('result-level');
+  const resultHighScore = document.getElementById('result-highScore');
   const resultScore = document.getElementById('result-score');
   const resultRetry = document.getElementById('result-retry');
   const resultTitle = document.getElementById('result-title');
 
   function setResult() {
+    let resultLevel;
     switch (level) {
       case 0:
-        resultLevel.textContent = 'Easy';
+        resultLevel = 'Easy';
         break;
       case 1:
-        resultLevel.textContent = 'Normal';
+        resultLevel = 'Normal';
         break;
       case 2:
-        resultLevel.textContent = 'Hard';
+        resultLevel = 'Hard';
         break;
     }
-    resultScore.textContent = `Score: ${score}`;
+    resultHighScore.textContent = `${highScoreUser}: ${highScore}`;
+    resultScore.textContent = `You: ${score}`;
   }
 
   resultRetry.addEventListener('click', () => {
-    step = 2;
+    step = GAME_SECTION;
     changeScreen();
     startGame();
   });
   resultTitle.addEventListener('click', () => {
-    step = 0;
+    step = START_SECTION;
     changeScreen();
   });
 }
+
+// input section
