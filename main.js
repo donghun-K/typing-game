@@ -5,7 +5,7 @@
 
   const sections = document.querySelectorAll('section');
 
-  function changeSection() {
+  function changeScreen() {
     sections.forEach((section, i) => {
       section.classList.add('inactive');
       if (i === step) {
@@ -14,18 +14,22 @@
     });
   }
 
-  changeSection();
+  changeScreen();
 
   // start section
   const startSection = document.getElementById('start');
   startSection.addEventListener('click', () => {
     step = 1;
-    changeSection();
+    changeScreen();
   });
+
+  // level section
+  let level;
+
   // game section
   let loc = 0;
   let life = 5;
-  const words = ['dora', 'apple', 'blue', 'red'];
+  const words = [[red, blue, pink, sky],[yellow, purple, crimson, hotpink],[lightgoldenrodyellow, palegoldenrod, mediumseagreen, cornflowerblue]]];
   let word = getWord();
   const timeLimit = 3 * 1000;
   let startTime;
