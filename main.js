@@ -24,7 +24,7 @@
   });
 
   // level section
-  let level;
+  let level = 0;
   const levelItems = document.querySelectorAll('.level-item');
   levelItems.forEach((levelItem, i) => {
     levelItem.addEventListener('click', () => {
@@ -32,6 +32,7 @@
       console.log(level);
       step = 2;
       changeScreen();
+      startGame();
     });
   });
   // game section
@@ -56,7 +57,7 @@
   const gameTimer = document.getElementById('game-timer');
 
   function getWord() {
-    return words[Math.floor(Math.random() * words.length)];
+    return words[level][Math.floor(Math.random() * words[level].length)];
   }
   function updateWord() {
     let placeholder = '';
@@ -89,31 +90,47 @@
     }
   }
   function startGame() {
-    isPlaying = true;
-    gameWord.textContent = word;
-    startTime = Date.now();
-    updateTimer();
-    updateLife();
+    setTimeout(() => {
+      gameWord.textContent = 3;
+    }, 1000);
+    setTimeout(() => {
+      gameWord.textContent = 2;
+    }, 1500);
+    setTimeout(() => {
+      gameWord.textContent = 1;
+    }, 2000);
+    setTimeout(() => {
+      gameWord.textContent = 'Start!';
+    }, 2500);
+    setTimeout(() => {
+      isPlaying = true;
+      gameWord.textContent = word;
+      startTime = Date.now();
+      updateTimer();
+      updateLife();
+    }, 3000);
   }
 
   window.addEventListener('keydown', (e) => {
-    console.log(e.key);
-    if (e.key === gameWord.textContent[loc]) {
-      console.log('correct!');
-      loc++;
-      if (loc === word.length) {
-        word = getWord();
+    if (isPlaying == true) {
+      console.log(e.key);
+      if (e.key === gameWord.textContent[loc]) {
+        console.log('correct!');
+        loc++;
+        if (loc === word.length) {
+          word = getWord();
+          loc = 0;
+        }
+        updateWord();
+      } else {
+        console.log('miss');
+        gameWord.textContent = word;
         loc = 0;
+        if (life > 0) {
+          life--;
+        }
+        updateLife();
       }
-      updateWord();
-    } else {
-      console.log('miss');
-      gameWord.textContent = word;
-      loc = 0;
-      if (life > 0) {
-        life--;
-      }
-      updateLife();
     }
   });
 }
