@@ -4,6 +4,7 @@
   let step = 0;
 
   const sections = document.querySelectorAll('section');
+
   function changeSection() {
     sections.forEach((section, i) => {
       section.classList.add('inactive');
@@ -15,6 +16,12 @@
 
   changeSection();
 
+  // start section
+  const startSection = document.getElementById('start');
+  startSection.addEventListener('click', () => {
+    step = 1;
+    changeSection();
+  });
   // game section
   let loc = 0;
   let life = 5;
