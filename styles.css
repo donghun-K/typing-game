@@ -52,6 +52,13 @@ section {
   font-size: 3rem;
   letter-spacing: 0.7rem;
 }
+#game-status {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+  margin: 0 auto;
+}
 
 /* result section */
 .result-select {

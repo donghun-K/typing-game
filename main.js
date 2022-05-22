@@ -55,10 +55,21 @@
 
   const gameLife = document.getElementById('game-life');
   const gameWord = document.getElementById('game-word');
+  const gameScore = document.getElementById('game-score');
   const gameTimer = document.getElementById('game-timer');
 
   function getWord() {
     return words[level][Math.floor(Math.random() * words[level].length)];
+  }
+  function updateLife() {
+    let placeholder = 'Life: ';
+    for (let i = 0; i < life; i++) {
+      placeholder += '♥';
+    }
+    for (let i = 0; i < 5 - life; i++) {
+      placeholder += '♡';
+    }
+    gameLife.textContent = placeholder;
   }
   function updateWord() {
     let placeholder = '';
@@ -67,15 +78,8 @@
     }
     gameWord.textContent = placeholder + word.substring(loc);
   }
-  function updateLife() {
-    let placeholder = '';
-    for (let i = 0; i < life; i++) {
-      placeholder += '♥';
-    }
-    for (let i = 0; i < 5 - life; i++) {
-      placeholder += '♡';
-    }
-    gameLife.textContent = placeholder;
+  function updateScore() {
+    gameScore.textContent = `Score: ${score}`;
   }
   function updateTimer() {
     const timeLeft = startTime + timeLimit - Date.now();
@@ -88,7 +92,7 @@
       gameTimer.textContent = '0.00';
       isPlaying = false;
       clearTimeout(timeoutId);
-      alert('Time Out!');
+      alert('Time out!');
       step = 3;
       changeScreen();
       setResult();
@@ -96,6 +100,9 @@
   }
   function startGame() {
     gameWord.textContent = 'Ready?';
+    gameLife.textContent = '';
+    gameScore.textContent = '';
+    gameTimer.textContent = '';
     loc = 0;
     life = 5;
     score = 0;
@@ -118,6 +125,7 @@
       startTime = Date.now();
       updateTimer();
       updateLife();
+      updateScore();
     }, 3000);
   }
 
@@ -131,6 +139,7 @@
           word = getWord();
           loc = 0;
           score += 1;
+          updateScore();
         }
         updateWord();
       } else {
