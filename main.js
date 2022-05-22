@@ -38,6 +38,7 @@
   // game section
   let loc = 0;
   let life = 5;
+  let score = 0;
   const words = [
     ['red', 'blue', 'pink', 'sky'],
     ['yellow', 'purple', 'crimson', 'hotpink'],
@@ -95,6 +96,9 @@
   }
   function startGame() {
     gameWord.textContent = 'Ready?';
+    loc = 0;
+    life = 5;
+    score = 0;
     setTimeout(() => {
       gameWord.textContent = 3;
     }, 1000);
@@ -126,6 +130,7 @@
         if (loc === word.length) {
           word = getWord();
           loc = 0;
+          score += 1;
         }
         updateWord();
       } else {
@@ -163,6 +168,7 @@
         resultLevel.textContent = 'Hard';
         break;
     }
+    resultScore.textContent = `Score: ${score}`;
   }
 
   resultRetry.addEventListener('click', () => {
