@@ -1,0 +1,54 @@
+/* common */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 800px;
+  height: 450px;
+  margin: 5rem auto;
+  background-color: #eeeeee;
+}
+
+.title {
+  font-size: 4rem;
+  letter-spacing: 0.5rem;
+}
+.subtitle {
+  font-size: 3rem;
+  letter-spacing: 0.5rem;
+}
+.description {
+  font-size: 1.5rem;
+}
+.inactive {
+  display: none;
+}
+
+/* level section */
+.level-item {
+  width: 30%;
+  cursor: pointer;
+  font-size: 1.3rem;
+  margin: 1rem auto;
+}
+.level-item:hover {
+  background-color: lightgrey;
+}
+
+/* game section */
+#game-word {
+  font-size: 3rem;
+  letter-spacing: 0.7rem;
+}
