@@ -49,17 +49,74 @@
   let life = 5;
   let score = 0;
   const words = [
-    ['red', 'blue', 'pink', 'sky'],
-    ['yellow', 'purple', 'crimson', 'hotpink'],
     [
-      'lightgoldenrodyellow',
-      'palegoldenrod',
-      'mediumseagreen',
-      'cornflowerblue',
+      'Freud',
+      'Noir',
+      'Eros',
+      'Idea',
+      'love',
+      'Ocean',
+      'Deus',
+      'Logos',
+      'Ethos',
+      'Ego',
+      'Nerd',
+      'Kant',
+      'Jung',
+      'Marx',
+      'Satan',
+      'Nymph',
+      'Libra',
+      'Karma',
+      'Vedas',
+      'Fate',
+    ],
+    [
+      'Nietzsche',
+      'Spinoza',
+      'Buddha',
+      'Zeitgeist',
+      'Hedonism',
+      'Nostalgia',
+      'Messiah',
+      'Pathos',
+      'Quantum',
+      'Habitus',
+      'Omerta',
+      'Sarcasm',
+      'Sephiroth',
+      'Qliphoth',
+      'Kabbalah',
+      'Baalzebub',
+      'Libido',
+      'Conatus',
+      'Lunatic',
+      'Paranoid',
+      'Nirvana',
+      'Samsara',
+      'Dharma',
+    ],
+    [
+      'Schopenhauer',
+      'Utilitarianism',
+      'Unconsciousness',
+      'Democritus',
+      'Phenylethylamine',
+      'Protestantism',
+      'Determinism',
+      'Rationalism',
+      'Polymorphism',
+      'Proletarian',
+      'Bourgeoisie',
+      'Simulacres',
+      'Masochistic',
+      'Nymphomaniac',
+      'Megalomania',
+      'Reincarnation',
     ],
   ];
   let word = getWord();
-  const timeLimit = 3 * 1000;
+  const timeLimit = 20 * 1000;
   let startTime;
 
   const gameLife = document.getElementById('game-life');
@@ -173,8 +230,7 @@
         }
         updateLife();
       }
-    }
-    if (isNewRecord == true) {
+    } else if (isNewRecord == true) {
       if (e.key === 'Enter') {
         const newUser = document.getElementById('input-username').value;
         if (newUser === '') {
