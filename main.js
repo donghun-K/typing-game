@@ -211,6 +211,8 @@
           updateScore();
         }
         updateWord();
+      } else if (e.key == 'Shift') {
+        return;
       } else {
         console.log('miss');
         gameWord.textContent = word;
