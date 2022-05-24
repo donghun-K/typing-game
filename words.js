@@ -20,6 +20,14 @@ const words = [
     'Karma',
     'Vedas',
     'Fate',
+    'Chaos',
+    'Nomad',
+    'These',
+    'Sin',
+    'Dogma',
+    'Monad',
+    'Agape',
+    'Arche',
   ],
   [
     'Nietzsche',
@@ -45,6 +53,11 @@ const words = [
     'Nirvana',
     'Samsara',
     'Dharma',
+    'Aporia',
+    'Metaphor',
+    'Antinomy',
+    'Paradox',
+    'Allegory',
   ],
   [
     'Schopenhauer',
@@ -63,6 +76,8 @@ const words = [
     'Nymphomaniac',
     'Megalomania',
     'Reincarnation',
+    'Cosmopolitanism',
+    'Ressentiment',
   ],
 ];
 
