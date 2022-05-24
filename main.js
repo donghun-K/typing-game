@@ -14,6 +14,14 @@
 
   const sections = document.querySelectorAll('section');
 
+  // 화
+  // 면
+  // 전
+  // 환
+  // 구
+  // 현
+  // 함
+  // 수
   function changeScreen() {
     sections.forEach((section, i) => {
       section.classList.add('inactive');
@@ -33,6 +41,14 @@
   });
 
   // level section
+
+  // 난
+  // 이
+  // 도
+  // 설
+  // 정
+  // 구
+  // 현
   let level = 0;
   const levelItems = document.querySelectorAll('.level-item');
   levelItems.forEach((levelItem, i) => {
@@ -160,6 +176,15 @@
       clearTimeout(timeoutId);
       isPlaying == true ? alert('Time out!') : null;
       step = RESULT_SECTION;
+      // 최
+      // 고
+      // 기
+      // 록
+      // 인
+      // 지
+      // 확
+      // 인
+      // !
       if (score > highScore) {
         isNewRecord = true;
         step = INPUT_SECTION;
@@ -232,7 +257,18 @@
         }
         updateLife();
       }
-    } else if (isNewRecord == true) {
+    }
+    // 최
+    // 고
+    // 기
+    // 록
+    // 이
+    // 면
+    // 여
+    // 기
+    // 작
+    // 동
+    else if (isNewRecord == true) {
       if (e.key === 'Enter') {
         const newUser = document.getElementById('input-username').value;
         if (newUser === '') {
