@@ -1,4 +1,5 @@
 'use strict';
+import words from './words.js';
 {
   const START_SECTION = 0;
   const LEVEL_SECTION = 1;
@@ -60,73 +61,6 @@
   let loc = 0;
   let life = 5;
   let score = 0;
-  const words = [
-    [
-      'Freud',
-      'Noir',
-      'Eros',
-      'Idea',
-      'love',
-      'Ocean',
-      'Deus',
-      'Logos',
-      'Ethos',
-      'Ego',
-      'Nerd',
-      'Kant',
-      'Jung',
-      'Marx',
-      'Satan',
-      'Nymph',
-      'Libra',
-      'Karma',
-      'Vedas',
-      'Fate',
-    ],
-    [
-      'Nietzsche',
-      'Spinoza',
-      'Buddha',
-      'Zeitgeist',
-      'Hedonism',
-      'Nostalgia',
-      'Messiah',
-      'Pathos',
-      'Quantum',
-      'Habitus',
-      'Omerta',
-      'Sarcasm',
-      'Sephiroth',
-      'Qliphoth',
-      'Kabbalah',
-      'Baalzebub',
-      'Libido',
-      'Conatus',
-      'Lunatic',
-      'Paranoid',
-      'Nirvana',
-      'Samsara',
-      'Dharma',
-    ],
-    [
-      'Schopenhauer',
-      'Utilitarianism',
-      'Unconsciousness',
-      'Democritus',
-      'Phenylethylamine',
-      'Protestantism',
-      'Determinism',
-      'Rationalism',
-      'Polymorphism',
-      'Proletarian',
-      'Bourgeoisie',
-      'Simulacres',
-      'Masochistic',
-      'Nymphomaniac',
-      'Megalomania',
-      'Reincarnation',
-    ],
-  ];
   let word = getWord();
   const timeLimit = 20 * 1000;
   let startTime;
@@ -139,6 +73,7 @@
   function getWord() {
     return words[level][Math.floor(Math.random() * words[level].length)];
   }
+  // update element value methods
   function updateLife() {
     let placeholder = 'Life: ';
     for (let i = 0; i < life; i++) {
@@ -187,6 +122,7 @@
       setResult();
     }
   }
+
   function startGame() {
     gameWord.textContent = 'Ready?';
     gameLife.textContent = '';
@@ -281,13 +217,13 @@
   // 작
   // 동
   inputText.addEventListener('click', () => {
-    const newUser = document.getElementById('input-username').value;
+    const user = document.getElementById('input-username').value;
     // input value validation
-    if (newUser === '') {
+    if (user === '') {
       alert('Name cannot be empty!');
     }
     highScore = score;
-    highScoreUser = newUser;
+    highScoreUser = user;
     changeScreen(RESULT_SECTION);
     setResult();
   });
