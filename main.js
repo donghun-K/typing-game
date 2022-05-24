@@ -21,7 +21,7 @@
   // 현
   // 함
   // 수
-  function changeScreen() {
+  function changeScreen(step) {
     sections.forEach((section, i) => {
       section.classList.add('inactive');
       if (i === step) {
@@ -30,13 +30,12 @@
     });
   }
 
-  changeScreen();
+  changeScreen(START_SECTION);
 
   // start section
   const startSection = document.getElementById('start');
   startSection.addEventListener('click', () => {
-    step = LEVEL_SECTION;
-    changeScreen();
+    changeScreen(LEVEL_SECTION);
   });
 
   // level section
@@ -53,9 +52,7 @@
   levelItems.forEach((levelItem, i) => {
     levelItem.addEventListener('click', () => {
       level = i;
-      console.log(level);
-      step = GAME_SECTION;
-      changeScreen();
+      changeScreen(GAME_SECTION);
       startGame();
     });
   });
@@ -183,8 +180,10 @@
       // 확
       // 인
       // !
-      score > highScore ? (step = INPUT_SECTION) : (step = RESULT_SECTION);
-      changeScreen();
+      score > highScore
+        ? changeScreen(INPUT_SECTION)
+        : changeScreen(RESULT_SECTION);
+
       setResult();
     }
   }
@@ -243,11 +242,9 @@
           isPlaying = false;
           alert('Game Over!');
           step = RESULT_SECTION;
-          if (score > highScore) {
-            step = INPUT_SECTION;
-          }
-          changeScreen();
-          setResult();
+          score > highScore
+            ? changeScreen(INPUT_SECTION)
+            : changeScreen(RESULT_SECTION);
         }
         updateLife();
       }
@@ -266,13 +263,11 @@
   }
 
   resultRetry.addEventListener('click', () => {
-    step = GAME_SECTION;
-    changeScreen();
+    changeScreen(GAME_SECTION);
     startGame();
   });
   resultTitle.addEventListener('click', () => {
-    step = START_SECTION;
-    changeScreen();
+    changeScreen(START_SECTION);
   });
   const inputText = document.getElementById('input-text');
   // 최
@@ -293,8 +288,7 @@
     }
     highScore = score;
     highScoreUser = newUser;
-    step = RESULT_SECTION;
-    changeScreen();
+    changeScreen(RESULT_SECTION);
     setResult();
   });
 }
