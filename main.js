@@ -226,7 +226,10 @@
 
   window.addEventListener('keydown', (e) => {
     if (isPlaying == true) {
-      if (e.key === gameWord.textContent[loc]) {
+      // check key down value validation
+      if (!e.key.match(/^[a-z]$/gi)) {
+        return;
+      } else if (e.key === gameWord.textContent[loc]) {
         console.log('correct!');
         loc++;
         if (loc === word.length) {
@@ -236,8 +239,6 @@
           updateScore();
         }
         updateWord();
-      } else if (e.key == 'Shift') {
-        return;
       } else {
         console.log('miss');
         gameWord.textContent = word;
@@ -256,30 +257,6 @@
           setResult();
         }
         updateLife();
-      }
-    }
-    // 최
-    // 고
-    // 기
-    // 록
-    // 이
-    // 면
-    // 여
-    // 기
-    // 작
-    // 동
-    else if (isNewRecord == true) {
-      if (e.key === 'Enter') {
-        const newUser = document.getElementById('input-username').value;
-        if (newUser === '') {
-          alert('Name cannot be empty!');
-        }
-        highScore = score;
-        highScoreUser = newUser;
-        isNewRecord = false;
-        step = RESULT_SECTION;
-        changeScreen();
-        setResult();
       }
     }
   });
@@ -319,3 +296,29 @@
 }
 
 // input section
+// window.addEventListener('keydown', () => {
+//   // 최
+//   // 고
+//   // 기
+//   // 록
+//   // 이
+//   // 면
+//   // 여
+//   // 기
+//   // 작
+//   // 동
+//   if (isNewRecord == true) {
+//     if (e.key === 'Enter') {
+//       const newUser = document.getElementById('input-username').value;
+//       if (newUser === '') {
+//         alert('Name cannot be empty!');
+//       }
+//       highScore = score;
+//       highScoreUser = newUser;
+//       isNewRecord = false;
+//       step = RESULT_SECTION;
+//       changeScreen();
+//       setResult();
+//     }
+//   }
+// });
