@@ -40,14 +40,6 @@ section {
   animation-direction: alternate;
 }
 
-@keyframes blink {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0.5;
-  }
-}
 /* level section */
 .level-item {
   width: 30%;
@@ -113,4 +105,18 @@ section {
 }
 #input-text {
   font-size: 1.3rem;
+  cursor: pointer;
+  animation-name: blink;
+  animation-duration: 0.7s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
 }

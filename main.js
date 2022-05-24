@@ -221,7 +221,7 @@
 
   window.addEventListener('keydown', (e) => {
     if (isPlaying == true) {
-      // check key down value validation
+      // key down value validation
       if (!e.key.match(/^[a-z]$/gi)) {
         return;
       } else if (e.key === gameWord.textContent[loc]) {
@@ -274,32 +274,27 @@
     step = START_SECTION;
     changeScreen();
   });
+  const inputText = document.getElementById('input-text');
+  // 최
+  // 고
+  // 기
+  // 록
+  // 이
+  // 면
+  // 여
+  // 기
+  // 작
+  // 동
+  inputText.addEventListener('click', () => {
+    const newUser = document.getElementById('input-username').value;
+    // input value validation
+    if (newUser === '') {
+      alert('Name cannot be empty!');
+    }
+    highScore = score;
+    highScoreUser = newUser;
+    step = RESULT_SECTION;
+    changeScreen();
+    setResult();
+  });
 }
-
-// input section
-// window.addEventListener('keydown', () => {
-//   // 최
-//   // 고
-//   // 기
-//   // 록
-//   // 이
-//   // 면
-//   // 여
-//   // 기
-//   // 작
-//   // 동
-//   if (isNewRecord == true) {
-//     if (e.key === 'Enter') {
-//       const newUser = document.getElementById('input-username').value;
-//       if (newUser === '') {
-//         alert('Name cannot be empty!');
-//       }
-//       highScore = score;
-//       highScoreUser = newUser;
-//       isNewRecord = false;
-//       step = RESULT_SECTION;
-//       changeScreen();
-//       setResult();
-//     }
-//   }
-// });
