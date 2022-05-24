@@ -6,7 +6,6 @@
   const RESULT_SECTION = 3;
   const INPUT_SECTION = 4;
 
-  let isNewRecord = false;
   let isPlaying = false;
   let step = START_SECTION;
   let highScoreUser = 'Unknown';
@@ -175,7 +174,6 @@
       isPlaying = false;
       clearTimeout(timeoutId);
       isPlaying == true ? alert('Time out!') : null;
-      step = RESULT_SECTION;
       // 최
       // 고
       // 기
@@ -185,10 +183,7 @@
       // 확
       // 인
       // !
-      if (score > highScore) {
-        isNewRecord = true;
-        step = INPUT_SECTION;
-      }
+      score > highScore ? (step = INPUT_SECTION) : (step = RESULT_SECTION);
       changeScreen();
       setResult();
     }
@@ -243,14 +238,12 @@
         console.log('miss');
         gameWord.textContent = word;
         loc = 0;
-        if (life > 0) {
-          life--;
-        } else {
+        life--;
+        if (life == 0) {
           isPlaying = false;
           alert('Game Over!');
           step = RESULT_SECTION;
           if (score > highScore) {
-            isNewRecord = true;
             step = INPUT_SECTION;
           }
           changeScreen();
@@ -268,18 +261,6 @@
   const resultTitle = document.getElementById('result-title');
 
   function setResult() {
-    let resultLevel;
-    switch (level) {
-      case 0:
-        resultLevel = 'Easy';
-        break;
-      case 1:
-        resultLevel = 'Normal';
-        break;
-      case 2:
-        resultLevel = 'Hard';
-        break;
-    }
     resultHighScore.textContent = `${highScoreUser}: ${highScore}`;
     resultScore.textContent = `You: ${score}`;
   }
