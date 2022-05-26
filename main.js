@@ -45,7 +45,6 @@ import words from './words.js';
   });
 
   // level section
-
   // 난
   // 이
   // 도
@@ -62,6 +61,7 @@ import words from './words.js';
       startGame();
     });
   });
+
   // game section
   let loc = 0;
   let life = 5;
@@ -78,7 +78,6 @@ import words from './words.js';
   function getWord() {
     return words[level][Math.floor(Math.random() * words[level].length)];
   }
-  // update element value methods
   function updateLife() {
     let placeholder = 'Life: ';
     for (let i = 0; i < life; i++) {
@@ -160,34 +159,35 @@ import words from './words.js';
   }
 
   window.addEventListener('keydown', (e) => {
-    if (isPlaying == true) {
-      // key down value validation
-      if (!e.key.match(/^[a-z]$/gi)) {
-        return;
-      } else if (e.key === gameWord.textContent[loc]) {
-        console.log('correct!');
-        loc++;
-        if (loc === word.length) {
-          word = getWord();
-          loc = 0;
-          score += 1;
-          updateScore();
-        }
-        updateWord();
-      } else {
-        console.log('miss');
-        gameWord.textContent = word;
+    if (isPlaying == false) {
+      return;
+    }
+    // key down value validation
+    if (!e.key.match(/^[a-z]$/gi)) {
+      return;
+    } else if (e.key === gameWord.textContent[loc]) {
+      console.log('correct!');
+      loc++;
+      if (loc === word.length) {
+        word = getWord();
         loc = 0;
-        life--;
-        if (life == 0) {
-          isPlaying = false;
-          alert('Game Over!');
-          score > highScore
-            ? changeScreen(INPUT_SECTION)
-            : changeScreen(RESULT_SECTION);
-        }
-        updateLife();
+        score += 1;
+        updateScore();
       }
+      updateWord();
+    } else {
+      console.log('miss');
+      gameWord.textContent = word;
+      loc = 0;
+      life--;
+      if (life == 0) {
+        isPlaying = false;
+        alert('Game Over!');
+        score > highScore
+          ? changeScreen(INPUT_SECTION)
+          : changeScreen(RESULT_SECTION);
+      }
+      updateLife();
     }
   });
 
@@ -209,6 +209,8 @@ import words from './words.js';
   resultTitle.addEventListener('click', () => {
     changeScreen(START_SECTION);
   });
+
+  // input section
   const inputText = document.getElementById('input-text');
   // 최
   // 고
