@@ -8,9 +8,14 @@ import words from './words.js';
   const INPUT_SECTION = 4;
 
   let isPlaying = false;
-  let step = START_SECTION;
-  let highScoreUser = 'Unknown';
   let highScore = 0;
+  if (localStorage.getItem('highScore') != null) {
+    highScore = localStorage.getItem('highScore');
+  }
+  let highScoreUser = 'Unknown';
+  if (localStorage.getItem('highScoreUser') != null) {
+    highScoreUser = localStorage.getItem('highScoreUser');
+  }
 
   const sections = document.querySelectorAll('section');
 
@@ -177,7 +182,6 @@ import words from './words.js';
         if (life == 0) {
           isPlaying = false;
           alert('Game Over!');
-          step = RESULT_SECTION;
           score > highScore
             ? changeScreen(INPUT_SECTION)
             : changeScreen(RESULT_SECTION);
@@ -224,6 +228,8 @@ import words from './words.js';
     }
     highScore = score;
     highScoreUser = user;
+    localStorage.setItem('highScore', highScore);
+    localStorage.setItem('highScoreUser', highScoreUser);
     changeScreen(RESULT_SECTION);
     setResult();
   });
