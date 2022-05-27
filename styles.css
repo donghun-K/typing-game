@@ -56,6 +56,10 @@ section {
   font-size: 3rem;
   letter-spacing: 0.7rem;
 }
+#game-word.wrong {
+  animation-name: quake;
+  animation-duration: 0.3s;
+}
 #game-status {
   display: flex;
   flex-direction: row;
@@ -110,6 +114,29 @@ section {
   animation-duration: 0.7s;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+}
+
+@keyframes quake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 
 @keyframes blink {

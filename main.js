@@ -178,6 +178,11 @@ import words from './words.js';
     } else {
       console.log('miss');
       gameWord.textContent = word;
+      gameWord.classList.remove('wrong');
+      gameWord.classList.add('wrong');
+      setTimeout(() => {
+        gameWord.classList.remove('wrong');
+      }, 300);
       loc = 0;
       life--;
       if (life == 0) {
