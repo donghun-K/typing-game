@@ -185,14 +185,14 @@ import words from './words.js';
       }, 300);
       loc = 0;
       life--;
+      updateLife();
       if (life == 0) {
         isPlaying = false;
         alert('Game Over!');
         score > highScore
           ? changeScreen(INPUT_SECTION)
           : changeScreen(RESULT_SECTION);
-      }
-      updateLife();
+      }      
     }
   });
 
