@@ -3,16 +3,12 @@ JavaScript 연습용으로 만든 타자 게임입니다.
 
 [Play here!](https://donghun-k.github.io/typing-game/)
 
-## 1. 제작 기간 & 참여 인원
-- 2022/5/23 ~ 2022/5/38
-- 개인 프로젝트
-
-## 2. 사용 기술
+## 사용 기술
 - JavaScript
 
-## 3. 핵심 기능
+## 프로젝트 소개
 
-## 4. 트러블 슈팅
+## 트러블 슈팅
 <details>
   <summary>게임 중 대문자 입력을 위해 Shift 키를 눌렀을 때 의도치 않은 라이프 감소가 일어나는 현상</summary>
   
